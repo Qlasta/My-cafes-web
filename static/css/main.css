@@ -94,6 +94,15 @@ input, textarea, select {
 .bordered-feature-image {
     width: 70%;
 }
+
+.btn-dark:hover {
+    background-color: #6c757d;
+}
+
+.btn-default:hover {
+    background-color: #f8f9fa;
+
+}
 /*input, select, textarea {
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -140,6 +149,7 @@ input, textarea, select {
 
 		a:hover {
 			text-decoration: none;
+			color: white;
 		}
 
 	section > :last-child,
