@@ -1,0 +1,50 @@
+{% include 'header.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+							</div>
+						</div>
+					</div>
+				</section>
+			<!-- Content -->
+				<section id="content">
+					<div class="container">
+						<div class="row">
+							<div class="col-9 col-12-medium">
+
+								<!-- Main Content -->
+									<section>
+										<header>
+											{% if new_cafe: %}
+											<h2>Add new cafe</h2>
+											<h3>Fill in the form to add new cafe</h3>
+											{% else:%}
+											<h2>Edit cafe info</h2>
+											<h3>Fill the form to update info</h3>
+											{% endif %}
+										</header>
+
+										{{ wtf.quick_form(form, novalidate=True)}}
+
+									</section>
+
+							</div>
+							<div class="col-3 col-12-medium">
+
+								<!-- Sidebar -->
+									<section>
+										<header>
+											<h2>Other suggested cafes</h2>
+										</header>
+										<ul class="link-list">
+											{% for sug_cafe in random_cafes: %}
+											<li><a href="/{{ sug_cafe.id }}">{{ sug_cafe.name }}</a></li>
+											{% endfor %}
+										</ul>
+									</section>
+
+							</div>
+						</div>
+					</div>
+				</section>
+{% endblock %}
+{% include 'footer.html' %}

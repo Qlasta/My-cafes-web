@@ -1,0 +1,92 @@
+{% include 'header.html' %}
+
+{% block content %}
+							</div>
+						</div>
+					</div>
+				</section>
+			<!-- Content -->
+				<section id="content">
+					<div class="container">
+						<div class="row">
+							<div class="col-9 col-12-medium">
+
+								<!-- Main Content -->
+									<section>
+										<header>
+											<h2>{{ cafe.name }}</h2>
+											<h3>  🧭   <a href="{{ cafe.map_url }}"> {{ cafe.location }}</a></h3>
+										</header>
+										<div> <img class=photo src="{{ cafe.img_url }}"></div>
+
+										<table class="table">
+
+  <thead>
+    <tr>
+      <th scope="col"> Cafe name</th>
+	  <th scope="col">Has Sockets</th>
+		<th scope="col">Has Toilet</th>
+		<th scope="col">Has Wifi</th>
+		<th scope="col">Can take calls</th>
+		<th scope="col">Seats</th>
+		<th scope="col">Coffee Price</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+
+      <th scope="row"><a href="/{{cafe.id}}">{{ cafe.name }}</a></th>
+	  {% if cafe.has_sockets: %}
+		  <td>🔌</td>
+		  {% else: %}
+		  <td>🚫</td>
+		  {% endif %}
+		{% if cafe.has_toilet: %}
+		  <td>🚽</td>
+		  {% else: %}
+		  <td>🚫</td>
+		  {% endif %}
+       {% if cafe.has_wifi: %}
+		  <td>📶</td>
+		  {% else: %}
+		  <td>🚫</td>
+		  {% endif %}
+	         {% if cafe.can_take_calls: %}
+		  <td>📞</td>
+		  {% else: %}
+		  <td>🚫</td>
+		  {% endif %}
+
+		      <td>{{ cafe.seats }}</td>
+      <td>{{ cafe.coffee_price }}</td>
+    </tr>
+
+
+  </tbody>
+
+</table>
+										<div> <a href="/edit/{{ cafe.id }} " ><button type="button" class="btn btn-dark">Edit cafe info</button></a></div>
+									</section>
+
+							</div>
+							<div class="col-3 col-12-medium">
+
+								<!-- Sidebar -->
+									<section>
+										<header>
+											<h2>Other suggested cafes</h2>
+										</header>
+										<ul class="link-list">
+											{% for sug_cafe in random_cafes: %}
+											<li><a href="/{{ sug_cafe.id }}">{{ sug_cafe.name }}</a></li>
+											{% endfor %}
+										</ul>
+									</section>
+
+							</div>
+						</div>
+					</div>
+				</section>
+{% endblock %}
+{% include 'footer.html' %}
